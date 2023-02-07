@@ -61,7 +61,7 @@ html {
 
 :root {
     box-sizing: border-box;
-    background-color: #F5F7FB;
+    background-color: #F9F9F9;
 
 
     font-synthesis: none;
@@ -81,4 +81,9 @@ body{
     height: 100vh;
     padding: 0 70px;
     overflow: hidden;
+}
+
+.header{
+    font-family: helvetica;
+    font-weight: bold;
 }
