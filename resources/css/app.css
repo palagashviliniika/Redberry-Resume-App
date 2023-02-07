@@ -1,3 +1,84 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    src: url("/public/fonts/HelveticaNeue-Medium-11.ttf");
+    font-family: helvetica;
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    src: url("/public/fonts/HelveticaNeue-Bold-02.ttf");
+    font-family: helvetica;
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    src: url("/public/fonts/HelveticaNeue-BoldItalic-04.ttf");
+    font-family: helvetica;
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    src: url("/public/fonts/HelveticaNeue-Italic-03.ttf");
+    font-family: helvetica;
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    src: url("/public/fonts/HelveticaNeue-Light-08.ttf");
+    font-family: helvetica;
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    src: url("/public/fonts/HelveticaNeue-LightItalic-09.ttf");
+    font-family: helvetica;
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    src: url("/public/fonts/HelveticaNeue-LightItalic-09.ttf");
+    font-family: helvetica;
+    font-weight: 200;
+    font-style: italic;
+}
+
+html {
+    scroll-behavior: smooth;
+    max-width: 100vw;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+:root {
+    box-sizing: border-box;
+    background-color: #F5F7FB;
+
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+body{
+    font-family: helvetica !important;
+}
+
+.welcomePage{
+    background-image: url("/public/images/bckground.svg");
+    width: 100vw;
+    height: 100vh;
+    padding: 0 70px;
+    overflow: hidden;
+}

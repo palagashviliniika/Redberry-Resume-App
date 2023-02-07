@@ -17,7 +17,11 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', ["text" => "abdasda"]);
+    return Inertia::render('Welcome', []);
+});
+
+Route::get('/personal', function () {
+    return Inertia::render('Personal', []);
 });
 
 require __DIR__.'/auth.php';
