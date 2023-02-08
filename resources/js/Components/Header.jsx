@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = (props) => {
     return (
-        <div className={"w-2/4 mt-[48px]"}>
+        <div className={"mt-[48px]"}>
             <div className={"header flex justify-between pl-[48px] items-center"}>
 
                 <div className={"flex space-x-[60px] items-center"}>
