@@ -16,11 +16,16 @@ const CustomInput = (props) => {
     }
 
     return (
-        <div className={"flex flex-col gap-[8px]"}>
-            <label className={`font-medium ${isValidated===false && `text-borderColor-textError`}`} htmlFor={props.name}>{props.label}</label>
+        <div className={props.className + " flex flex-col gap-[8px] w-full"}>
+            <label
+                className={`font-medium ${isValidated===false && `text-borderColor-textError`}`}
+                htmlFor={props.name}
+            >
+                {props.label}
+            </label>
             <div className={"flex items-center w-full relative"}>
                 <input
-                    className={`py-[14px] px-[16px] w-full font-[200] rounded border border-borderColor ${isValidated===false && `border-borderColor-error focus:outline-borderColor-error`} ${isValidated===true && `border-borderColor-correct focus:outline-borderColor-correct`} focus:outline-borderColor`}
+                    className={`py-[14px] px-[16px] w-full font-[200] rounded border border-borderColor focus:ring-borderColor focus:ring-1 focus:border-borderColor ${isValidated===false && `border-borderColor-error focus:ring-borderColor-error focus:border-borderColor-error`} ${isValidated===true && `border-borderColor-correct focus:ring-borderColor-correct focus:border-borderColor-correct`}`}
                     type={props.type}
                     placeholder={props.placeholder}
                     onChange={props.onChange}
@@ -32,7 +37,7 @@ const CustomInput = (props) => {
                 {isValidated===true && <img src="./images/correct.svg" className={"w-[24px] h-[24px] absolute right-4"}/>}
             </div>
 
-            <p className={"font-[200]"}>{props.warning}</p>
+            {props.warning && <p className={"font-[200] text-sm"}>{props.warning}</p>}
         </div>
     );
 };

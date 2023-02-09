@@ -23,6 +23,9 @@ module.exports = {
                     error: "#EF5050",
                     correct: "#98E37E",
                     textError: "#E52F2F"
+                },
+                'inputColor':{
+                    DEFAULT: "#0E80BF"
                 }
             }
         },
