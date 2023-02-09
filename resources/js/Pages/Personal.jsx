@@ -36,7 +36,7 @@ export default function Personal(props) {
                         warning={"მინიმუმ 2 ასო, ქართული ასოები"}
                         value={formData.firstName}
                         onChange={handleChange}
-                        validation={/^[ა-ჰ]+$/}
+                        validation={/^[ა-ჰ]{2,}$/}
                     />
                 </form>
             </div>

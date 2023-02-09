@@ -5,7 +5,7 @@
 @font-face {
     src: url("/public/fonts/HelveticaNeue-Medium-11.ttf");
     font-family: helvetica;
-    font-weight: normal;
+    font-weight: 500;
     font-style: normal;
 }
 
@@ -50,6 +50,14 @@
     font-weight: 200;
     font-style: italic;
 }
+
+@font-face {
+    src: url("/public/fonts/HelveticaNeue-01.ttf");
+    font-family: helvetica;
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 html {
     scroll-behavior: smooth;

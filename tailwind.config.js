@@ -17,6 +17,12 @@ module.exports = {
             colors: {
                 'customBlack':{
                     DEFAULT: '#1A1A1A'
+                },
+                'borderColor':{
+                    DEFAULT: "#BCBCBC",
+                    error: "#EF5050",
+                    correct: "#98E37E",
+                    textError: "#E52F2F"
                 }
             }
         },
