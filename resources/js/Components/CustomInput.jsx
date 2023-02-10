@@ -32,6 +32,7 @@ const CustomInput = (props) => {
                     onKeyUp={props.validation && handleKeyUp}
                     name={props.name}
                     value={props.value}
+                    id={props.name}
                 />
                 {isValidated===false && <img src="./images/error.svg" className={"w-[24px] h-[24px] absolute -right-10"}/>}
                 {isValidated===true && <img src="./images/correct.svg" className={"w-[24px] h-[24px] absolute right-4"}/>}

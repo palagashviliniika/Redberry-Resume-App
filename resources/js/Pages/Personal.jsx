@@ -3,6 +3,7 @@ import Header from "@/Components/Header";
 import {Head} from "@inertiajs/react";
 import CustomInput from "@/Components/CustomInput";
 import CustomFileInput from "@/Components/CustomFileInput";
+import CustomTextareaInput from "@/Components/CustomTextareaInput";
 
 export default function Personal(props) {
     const [formData, setFormData] = useState(
@@ -10,7 +11,9 @@ export default function Personal(props) {
             firstName: "",
             lastName: "",
             image: "",
-            aboutMe: ""
+            aboutMe: "",
+            email: "",
+            phone: ""
         }
     )
 
@@ -62,17 +65,42 @@ export default function Personal(props) {
                         label={"პირადი ფოტოს ატვირთვა"}
                         placeholder={"ატვირთვა"}
                     />
-
-                    {/*<CustomInput*/}
-                    {/*    type={"textarea"}*/}
-                    {/*    name={"aboutMe"}*/}
-                    {/*    label={"გვარი"}*/}
-                    {/*    placeholder={"მუმლაძე"}*/}
-                    {/*    warning={"მინიმუმ 2 ასო, ქართული ასოები"}*/}
-                    {/*    value={formData.aboutMe}*/}
                     {/*    onChange={handleChange}*/}
-                    {/*    className={"mt-[54px]"}*/}
-                    {/*/>*/}
+                    {/*    value={formData.aboutMe}*/}
+
+                    <CustomTextareaInput
+                        name={"aboutMe"}
+                        label={"ჩემ შესახებ (არასავალდებულო)"}
+                        placeholder={"ზოგადი ინფო შენ შესახებ"}
+                        value={formData.aboutMe}
+                        onChange={handleChange}
+                        className={"mt-[54px]"}
+                    />
+
+                    <CustomInput
+                        type={"email"}
+                        name={"email"}
+                        label={"ელ.ფოსტა"}
+                        placeholder={"anzorr666@redberry.ge"}
+                        warning={"უნდა მთავრდებოდეს @redberry.ge-ით"}
+                        value={formData.email}
+                        onChange={handleChange}
+                        validation={/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@redberry.ge$/}
+                        className={"mt-[32px]"}
+                    />
+
+                    <CustomInput
+                        type={"text"}
+                        name={"phone"}
+                        label={"მობილურის ნომერი"}
+                        placeholder={"+995 551 12 34 56"}
+                        warning={"უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს"}
+                        value={formData.phone}
+                        onChange={handleChange}
+                        validation={/^(\+995)(79\d{7}|5\d{8})$/}
+                        className={"mt-[32px]"}
+                    />
+
 
                 </form>
             </div>
