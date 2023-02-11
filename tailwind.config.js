@@ -26,6 +26,12 @@ module.exports = {
                 },
                 'inputColor':{
                     DEFAULT: "#0E80BF"
+                },
+                'customOrange':{
+                    DEFAULT: "#F93B1D"
+                },
+                'buttonColor':{
+                    DEFAULT: "#6B40E3"
                 }
             }
         },

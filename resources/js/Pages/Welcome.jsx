@@ -19,7 +19,7 @@ export default function Welcome(props) {
                         src={"./images/LOGO2.svg"}
                         className={"absolute -mr-[470px] mt-[150px]"}
                     />
-                    <Link href={"/personal"} className={"bg-red-400 py-[18px] px-[126px] text-white bg-customBlack rounded-[8px] cursor-pointer z-10"}>რეზიუმეს დამატება</Link>
+                    <Link href={"/personal"} className={"py-[18px] px-[126px] text-white bg-customBlack rounded-[8px] cursor-pointer z-10"}>რეზიუმეს დამატება</Link>
                 </div>
             </div>
         </>
