@@ -11,12 +11,27 @@ export default function Personal(props) {
     const [formData, setFormData] = useState(
     () => JSON.parse(localStorage.getItem("formData")) ||
         {
-            firstName: "",
-            lastName: "",
+            firstName: {
+                text: "",
+                validated: ""
+            },
+            lastName: {
+                text: "",
+                validated: ""
+            },
             image: "",
-            aboutMe: "",
-            email: "",
-            phone: ""
+            aboutMe: {
+                text: "",
+                validated: ""
+            },
+            email: {
+                text: "",
+                validated: ""
+            },
+            phone: {
+                text: "",
+                validated: ""
+            }
         }
     )
 
@@ -24,15 +39,15 @@ export default function Personal(props) {
         localStorage.setItem("formData", JSON.stringify(formData))
     }, [formData])
 
-    const handleChange = (event) => {
-        const {name,value} = event.target
-        setFormData(prevFormData => {
-            return{
-                ...prevFormData,
-                [name]: value
-            }
-        })
-    }
+    // const handleChange = (event) => {
+    //     const {name,value} = event.target
+    //     setFormData(prevFormData => {
+    //         return{
+    //             ...prevFormData,
+    //             [name]: {...prevFormData[name], text: value}
+    //         }
+    //     })
+    // }
 
     return (
         <>
@@ -52,8 +67,9 @@ export default function Personal(props) {
                                 placeholder={"ანზორ"}
                                 warning={"მინიმუმ 2 ასო, ქართული ასოები"}
                                 value={formData.firstName}
-                                onChange={handleChange}
                                 validation={/^[ა-ჰ]{2,}$/}
+                                setFormData={setFormData}
+                                formData={formData}
                             />
 
                             <CustomInput
@@ -63,8 +79,9 @@ export default function Personal(props) {
                                 placeholder={"მუმლაძე"}
                                 warning={"მინიმუმ 2 ასო, ქართული ასოები"}
                                 value={formData.lastName}
-                                onChange={handleChange}
                                 validation={/^[ა-ჰ]{2,}$/}
+                                setFormData={setFormData}
+                                formData={formData}
                             />
                         </div>
 
@@ -73,7 +90,7 @@ export default function Personal(props) {
                             label={"პირადი ფოტოს ატვირთვა"}
                             placeholder={"ატვირთვა"}
                         />
-                        {/*    onChange={handleChange}*/}
+                        {/*    */}
                         {/*    value={formData.aboutMe}*/}
 
                         <CustomTextareaInput
@@ -81,8 +98,9 @@ export default function Personal(props) {
                             label={"ჩემ შესახებ (არასავალდებულო)"}
                             placeholder={"ზოგადი ინფო შენ შესახებ"}
                             value={formData.aboutMe}
-                            onChange={handleChange}
                             className={"mt-[54px]"}
+                            setFormData={setFormData}
+                            formData={formData}
                         />
 
                         <CustomInput
@@ -92,9 +110,10 @@ export default function Personal(props) {
                             placeholder={"anzorr666@redberry.ge"}
                             warning={"უნდა მთავრდებოდეს @redberry.ge-ით"}
                             value={formData.email}
-                            onChange={handleChange}
                             validation={/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@redberry.ge$/}
                             className={"mt-[32px]"}
+                            setFormData={setFormData}
+                            formData={formData}
                         />
 
                         <CustomInput
@@ -104,9 +123,10 @@ export default function Personal(props) {
                             placeholder={"+995 551 12 34 56"}
                             warning={"უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს"}
                             value={formData.phone}
-                            onChange={handleChange}
                             validation={/^(\+995)(79\d{7}|5\d{8})$/}
                             className={"mt-[32px]"}
+                            setFormData={setFormData}
+                            formData={formData}
                         />
 
                         <div className={"mt-[150px] flex justify-end"}>
