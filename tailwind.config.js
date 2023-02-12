@@ -16,7 +16,9 @@ module.exports = {
             },
             colors: {
                 'customBlack':{
-                    DEFAULT: '#1A1A1A'
+                    DEFAULT: '#1A1A1A',
+                    gray: "#C1C1C1",
+                    date: "#909090"
                 },
                 'borderColor':{
                     DEFAULT: "#BCBCBC",

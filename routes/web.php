@@ -24,4 +24,8 @@ Route::get('/personal', function () {
     return Inertia::render('Personal', []);
 });
 
+Route::get('/resume', function () {
+    return Inertia::render('ResumePage', []);
+});
+
 require __DIR__.'/auth.php';

@@ -6,38 +6,64 @@ import CustomFileInput from "@/Components/CustomFileInput";
 import CustomTextareaInput from "@/Components/CustomTextareaInput";
 import Resume from "@/Components/Resume";
 import CustomButton from "@/Components/CustomButton";
+import FirstPage from "@/Components/FirstPage";
+import SecondPage from "@/Components/SecondPage";
+import ThirdPage from "@/Components/ThirdPage";
 
 export default function Personal(props) {
     const [formData, setFormData] = useState(
     () => JSON.parse(localStorage.getItem("formData")) ||
         {
-            firstName: {
-                text: "",
-                validated: ""
-            },
-            lastName: {
-                text: "",
-                validated: ""
-            },
+            firstName: "",
+            lastName: "",
             image: "",
-            aboutMe: {
-                text: "",
-                validated: ""
-            },
-            email: {
-                text: "",
-                validated: ""
-            },
-            phone: {
-                text: "",
-                validated: ""
-            }
+            aboutMe: "",
+            email: "",
+            phone: "",
+            position: "",
+            employer: "",
+            startDate: "",
+            endDate: "",
+            description: "",
+            school: "",
+            degree: "",
+            gradDate: "",
+            schoolDescription: ""
         }
     )
+
+    const [page, setPage] = useState(1)
+    const [degrees, setDegrees] = useState([])
+
+    useEffect(() => {
+        let subscribed = true
+        fetch("https://resume.redberryinternship.ge/api/degrees")
+            .then(res => res.json())
+            .then(data => {
+                if(subscribed){
+                    setDegrees(data)
+                }
+            })
+
+        return () => {
+            subscribed = false
+        }
+    }, [])
+
 
     useEffect(() => {
         localStorage.setItem("formData", JSON.stringify(formData))
     }, [formData])
+
+    const nextPage = (event) => {
+        event.preventDefault()
+        setPage(prevPage => prevPage + 1)
+    }
+
+    const previousPage = (event) => {
+        event.preventDefault()
+        setPage(prevPage => prevPage - 1)
+    }
 
     // const handleChange = (event) => {
     //     const {name,value} = event.target
@@ -54,96 +80,45 @@ export default function Personal(props) {
             <Head title="Personal Info" />
 
             <div className={"flex gap-[230px]"}>
-                <div className={"w-2/4"}>
-                    <Header page={1}>
-                        პირადი ინფო
-                    </Header>
-                    <form action="" className={"flex flex-col pl-[150px]"}>
-                        <div className={"flex w-full justify-between gap-x-[52px]"}>
-                            <CustomInput
-                                type={"text"}
-                                name={"firstName"}
-                                label={"სახელი"}
-                                placeholder={"ანზორ"}
-                                warning={"მინიმუმ 2 ასო, ქართული ასოები"}
-                                value={formData.firstName}
-                                validation={/^[ა-ჰ]{2,}$/}
-                                setFormData={setFormData}
-                                formData={formData}
-                            />
 
-                            <CustomInput
-                                type={"text"}
-                                name={"lastName"}
-                                label={"გვარი"}
-                                placeholder={"მუმლაძე"}
-                                warning={"მინიმუმ 2 ასო, ქართული ასოები"}
-                                value={formData.lastName}
-                                validation={/^[ა-ჰ]{2,}$/}
-                                setFormData={setFormData}
-                                formData={formData}
-                            />
-                        </div>
+                {
+                    page === 1 &&
+                    <FirstPage
+                        formData={formData}
+                        setFormData={setFormData}
+                        page={page}
+                        nextPage={nextPage}
+                    />
+                }
 
-                        <CustomFileInput
-                            name={"image"}
-                            label={"პირადი ფოტოს ატვირთვა"}
-                            placeholder={"ატვირთვა"}
-                        />
-                        {/*    */}
-                        {/*    value={formData.aboutMe}*/}
+                {
+                    page === 2 &&
+                    <SecondPage
+                        formData={formData}
+                        setFormData={setFormData}
+                        page={page}
+                        nextPage={nextPage}
+                        previousPage={previousPage}
+                    />
+                }
 
-                        <CustomTextareaInput
-                            name={"aboutMe"}
-                            label={"ჩემ შესახებ (არასავალდებულო)"}
-                            placeholder={"ზოგადი ინფო შენ შესახებ"}
-                            value={formData.aboutMe}
-                            className={"mt-[54px]"}
-                            setFormData={setFormData}
+                {
+                    page === 3 &&
+                        <ThirdPage
                             formData={formData}
-                        />
-
-                        <CustomInput
-                            type={"email"}
-                            name={"email"}
-                            label={"ელ.ფოსტა"}
-                            placeholder={"anzorr666@redberry.ge"}
-                            warning={"უნდა მთავრდებოდეს @redberry.ge-ით"}
-                            value={formData.email}
-                            validation={/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@redberry.ge$/}
-                            className={"mt-[32px]"}
                             setFormData={setFormData}
-                            formData={formData}
+                            page={page}
+                            nextPage={nextPage}
+                            previousPage={previousPage}
+                            degrees={degrees}
                         />
-
-                        <CustomInput
-                            type={"text"}
-                            name={"phone"}
-                            label={"მობილურის ნომერი"}
-                            placeholder={"+995 551 12 34 56"}
-                            warning={"უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს"}
-                            value={formData.phone}
-                            validation={/^(\+995)(79\d{7}|5\d{8})$/}
-                            className={"mt-[32px]"}
-                            setFormData={setFormData}
-                            formData={formData}
-                        />
-
-                        <div className={"mt-[150px] flex justify-end"}>
-                            <CustomButton>
-                                შემდეგი
-                            </CustomButton>
-                        </div>
+                }
 
 
-                    </form>
-
-
-                </div>
-
-                <div className={"w-2/4"}>
+                <div className={"w-2/4 pr-[75px]"}>
                     <Resume
                         formData={formData}
+                        degrees={degrees}
                     />
                 </div>
             </div>
